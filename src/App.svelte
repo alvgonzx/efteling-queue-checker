@@ -1,4 +1,5 @@
 <script>
+  import { onMount } from 'svelte';
   import Card from './lib/Card.svelte';
 
   const proxy_url = 'https://corsproxy.io/?';
@@ -7,13 +8,15 @@
   let lands = [];
 
   const fetchRides = async () => {
-    const response = await fetch(`${proxy_url}${api_url}`)
+    const response = await fetch(`${proxy_url}${api_url}`);
     const data = await response.json();
 
     lands = data.lands;
   }
 
-  fetchRides();
+  onMount(() => {
+    fetchRides();
+  })
 </script>
 
 <main>
@@ -21,7 +24,7 @@
 		<div class="py-6 flex flex-col gap-4 w-full flex-nowrap md:flex-wrap md:flex-row">
       {#each lands as land}
         {#each land.rides as ride}
-          <Card name={ride.name} queue={ride.wait_time} status={false}/>
+          <Card name={ride.name} queue={ride.wait_time} status={ride.is_open ? true : false}/>
         {/each}
       {/each}
     </div>
