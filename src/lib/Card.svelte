@@ -1,5 +1,5 @@
 <script>
-	export let name, queue;
+	export let name, queue, status;
 </script>
 
 <div class="md:w-1/4 block max-w-sm mx-auto  w-3/4 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">

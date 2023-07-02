@@ -4,12 +4,14 @@
   const proxy_url = 'https://corsproxy.io/?';
   const api_url = 'https://queue-times.com/parks/160/queue_times.json';
 
+  let lands = [];
+
   const fetchRides = async () => {
     const response = await fetch(`${proxy_url}${api_url}`)
     const data = await response.json();
 
-    console.log(data);
-}
+    lands = data.lands;
+  }
 
   fetchRides();
 </script>
@@ -17,11 +19,10 @@
 <main>
   <h1 class="text-3xl text-center font-bold pt-2">Efteling Queue Checker</h1>
 		<div class="py-6 flex flex-col gap-4 w-full flex-nowrap md:flex-wrap md:flex-row">
-      <Card name="Baron 1898" queue="70"></Card>
-      <Card name="Baron 1898" queue="20"></Card>
-      <Card name="Baron 1898" queue="10"></Card>
-      <Card name="Baron 1898" queue="30"></Card>
-      <Card name="Baron 1898" queue="60"></Card>
-      <Card name="Baron 1898" queue="40"></Card>
+      {#each lands as land}
+        {#each land.rides as ride}
+          <Card name={ride.name} queue={ride.wait_time} status={false}/>
+        {/each}
+      {/each}
     </div>
 </main>
