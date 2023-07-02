@@ -1,5 +1,17 @@
 <script>
   import Card from './lib/Card.svelte';
+
+  const proxy_url = 'https://corsproxy.io/?';
+  const api_url = 'https://queue-times.com/parks/160/queue_times.json';
+
+  const fetchRides = async () => {
+    const response = await fetch(`${proxy_url}${api_url}`)
+    const data = await response.json();
+
+    console.log(data);
+}
+
+  fetchRides();
 </script>
 
 <main>
