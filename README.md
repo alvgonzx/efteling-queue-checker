@@ -2,7 +2,7 @@
 Efteling is a theme park located in Netherlands, this is a simple Queue Checker made with svelte.
 
 ## Check it out
-Not online yet
+Check the project at [Vercel](https://efteling-queue-checker.vercel.app/)
 
 ## Technologies
 - Vite ⚡
